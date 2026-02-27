@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(
+    180deg,
+    #0a0f1c 0%,
+    #0d1326 40%,
+    #0a0f1c 100%
+  );
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 20% 30%, rgba(0,255,255,0.06), transparent 40%);
+  pointer-events:none;
+}
+
+/* ⭐ ADD BELOW THIS ⭐ */
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-slower {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spin-slow 28s linear infinite reverse;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+@keyframes sweep {
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(150%); }
+}
