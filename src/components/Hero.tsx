@@ -31,7 +31,7 @@ export default function Hero() {
           <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 via-transparent to-transparent" />
 
           <p className="text-primary text-sm tracking-widest uppercase mb-3">
-            Data Science Portfolio
+            Athul N A Portfolio
           </p>
 
           <h1 className="text-5xl font-bold">
