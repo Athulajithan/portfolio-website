@@ -21,6 +21,24 @@ export default function Projects() {
   live: "https://online-course-recommendation-system.streamlit.app/",
   github: "https://github.com/Athulajithan/Online-course-recommendation-system",
 },
+
+    // ✅ NEW PROJECT ADDED HERE
+    {
+      title: "Netflix Tableau Dashboard",
+      category: "Data Analytics",
+      description:
+        "Interactive Tableau dashboard analyzing Netflix movies and TV shows, focusing on content distribution, ratings, genres, and trends.",
+      details: [
+        "Tableau dashboard with interactive filters",
+        "Movies vs TV Shows comparison",
+        "Top genres & ratings analysis",
+        "Content trends over time",
+        "Geographical distribution (map visualization)"
+      ],
+      live: "https://public.tableau.com/views/Netflex-Dashboard/Netflix",
+      github: "https://github.com/Athulajithan/Netflix-tableau-dashboard",
+    },
+
     {
       title: "Apple Stock Price Forecasting",
       category: "ML",
@@ -75,7 +93,8 @@ export default function Projects() {
 
       {/* Filter Buttons */}
       <div className="flex flex-wrap justify-center gap-4 mb-10">
-        {["All", "ML", "Web"].map((type) => (
+        {/* ✅ Added "Data Analytics" */}
+        {["All", "ML", "Web", "Data Analytics"].map((type) => (
           <button
             key={type}
             onClick={() => setFilter(type)}
