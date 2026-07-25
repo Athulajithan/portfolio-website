@@ -35,7 +35,7 @@ export default function Hero() {
           </p>
 
           <h1 className="text-5xl font-bold">
-            Hi, I'm <span className="text-primary">Athul N A</span>
+            Hi, I'm <span className="text-primary">Athul Ajithan</span>
           </h1>
 
           <h2 className="text-xl text-gray-300 mt-4 h-10">
