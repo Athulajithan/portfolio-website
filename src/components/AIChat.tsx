@@ -92,22 +92,27 @@ Answer professionally like explaining a candidate.
     setMsg("");
     setLoading(true);
 
-    const key = import.meta.env.VITE_OPENROUTER_KEY as string;
-    if (!key || key === "Your API Key") {
-      streamText("Missing OpenRouter API key. Add VITE_OPENROUTER_KEY to .env and restart the dev server.");
+    const useProxy = import.meta.env.PROD;
+    const browserKey = import.meta.env.VITE_OPENROUTER_KEY as string;
+    const endpoint = useProxy ? "/api/openrouter" : "https://api.openrouter.ai/v1/chat/completions";
+
+    if (!useProxy && (!browserKey || browserKey === "Your API Key")) {
+      streamText("Missing OpenRouter API key for local development. Copy .env.example to .env and set VITE_OPENROUTER_KEY.");
       setLoading(false);
       return;
     }
 
     try {
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (!useProxy) {
+        headers.Authorization = `Bearer ${browserKey}`;
+      }
+
       const res = await axios.post(
-        "https://api.openrouter.ai/v1/chat/completions",
+        endpoint,
         { model: "openai/gpt-3.5-turbo", messages: fullMessages },
         {
-          headers: {
-            Authorization: `Bearer ${key}`,
-            "Content-Type": "application/json"
-          }
+          headers
         }
       );
 
