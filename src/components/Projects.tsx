@@ -22,7 +22,22 @@ export default function Projects() {
   github: "https://github.com/Athulajithan/Online-course-recommendation-system",
 },
 
-    // ✅ NEW PROJECT ADDED HERE
+    {
+      title: "Bike Sales Analysis Dashboard",
+      category: "Data Analytics",
+      description:
+        "End-to-end bike sales analysis using SQL, Excel, and Tableau to deliver revenue, customer, and product performance insights.",
+      details: [
+        "SQL-driven sales analytics and customer segmentation",
+        "Excel-based data modeling and financial performance review",
+        "Interactive Tableau executive dashboard for sales performance",
+        "Actionable insights on revenue, product mix, and regional demand",
+        "Published Tableau dashboard for real-time stakeholder review"
+      ],
+      live: "https://public.tableau.com/app/profile/athul.n.a/viz/SalesPerformanceExecutiveDashboard_17740027247360/Dashboard1?publish=yes",
+      github: "https://github.com/Athulajithan/Bike-Sales-Analysis",
+    },
+
     {
       title: "Netflix Tableau Dashboard",
       category: "Data Analytics",
