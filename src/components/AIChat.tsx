@@ -92,26 +92,32 @@ Answer professionally like explaining a candidate.
     setMsg("");
     setLoading(true);
 
-    try{
-      const res=await axios.post(
-        "https://openrouter.ai/api/v1/chat/completions",
-        { model:"openai/gpt-3.5-turbo", messages:fullMessages },
+    const key = import.meta.env.VITE_OPENROUTER_KEY as string;
+    if (!key || key === "Your API Key") {
+      streamText("Missing OpenRouter API key. Add VITE_OPENROUTER_KEY to .env and restart the dev server.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const res = await axios.post(
+        "https://api.openrouter.ai/v1/chat/completions",
+        { model: "openai/gpt-3.5-turbo", messages: fullMessages },
         {
-          headers:{
-            Authorization:`Bearer ${import.meta.env.VITE_OPENROUTER_KEY}`,
-            "HTTP-Referer":"http://localhost:5173",
-            "X-Title":"Athul Portfolio",
-            "Content-Type":"application/json"
+          headers: {
+            Authorization: `Bearer ${key}`,
+            "Content-Type": "application/json"
           }
         }
       );
 
-      const reply=res.data.choices[0].message.content;
+      const reply = res.data?.choices?.[0]?.message?.content ?? "I couldn't generate a response.";
       streamText(reply);
       speak(reply);
-
-    }catch{
-      streamText("AI not connected. Check API key.");
+    } catch (error: any) {
+      console.error("AI request failed:", error);
+      const errorMessage = error?.response?.data?.error?.message || error?.message || "AI not connected. Check API key.";
+      streamText(`AI error: ${errorMessage}`);
     }
 
     setLoading(false);
