@@ -55,6 +55,20 @@ export default function Projects() {
     },
 
     {
+      title: "Industrial IoT Analytics Platform",
+      category: "ML",
+      description:
+        "Predictive maintenance platform for industrial IoT using sensor telemetry, ML modeling, and a Streamlit dashboard.",
+      details: [
+        "Sensor data ingestion and telemetry analytics",
+        "Predictive maintenance modeling using machine learning",
+        "Real-time performance dashboard in Streamlit",
+        "Anomaly detection and asset health monitoring",
+      ],
+      live: "https://industrial-iot-analytics-platform-mp7wkrsn58nmehby4x77zb.streamlit.app/",
+      github: "https://github.com/Athulajithan/industrial-IOT-analytics-platform",
+    },
+    {
       title: "Apple Stock Price Forecasting",
       category: "ML",
       description:
