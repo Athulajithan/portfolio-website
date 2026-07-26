@@ -7,6 +7,18 @@ export default function Skills() {
       skills: ["Python", "SQL"],
     },
     {
+      title: "Machine Learning & AI",
+      skills: [
+        "Machine Learning",
+        "Time Series Forecasting",
+        "Predictive Maintenance",
+        "Anomaly Detection",
+        "Audio Classification",
+        "LLM Integration",
+        "Model Evaluation",
+      ],
+    },
+    {
       title: "Data Analysis",
       skills: [
         "Data Cleaning",
@@ -24,6 +36,7 @@ export default function Skills() {
         "Power BI",
         "Excel",
         "Matplotlib",
+        "Interactive Dashboards",
       ],
     },
     {
@@ -32,6 +45,8 @@ export default function Skills() {
         "Relational Databases",
         "CSV / Excel Data Handling",
         "Jupyter Notebook",
+        "Streamlit",
+        "Flask",
       ],
     },
     {
