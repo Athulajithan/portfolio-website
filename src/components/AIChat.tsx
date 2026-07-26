@@ -79,7 +79,9 @@ You are Athul's portfolio AI assistant.
 ${portfolioContext}
 
 Mode: ${mode}
-Answer professionally like explaining a candidate.
+Answer positively and professionally.
+Use resume, certifications, internship, and project details to answer every question.
+If the user asks about skills or experience, cite specific certifications, projects, and accomplishments from the portfolio.
 `;
 
     const fullMessages=[
@@ -130,7 +132,7 @@ Answer professionally like explaining a candidate.
 
   /* ---------- VOICE INPUT ---------- */
   const startVoice=()=>{
-    const SR:any=window.SpeechRecognition||(window as any).webkitSpeechRecognition;
+    const SR:any=(window as any).SpeechRecognition||(window as any).webkitSpeechRecognition;
     if(!SR) return;
     const r=new SR();
     r.onresult=(e:any)=>send(e.results[0][0].transcript);

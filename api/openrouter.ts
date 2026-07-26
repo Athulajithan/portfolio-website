@@ -4,9 +4,9 @@ export default async function handler(req: any, res: any) {
     return;
   }
 
-  const key = process.env.OPENROUTER_API_KEY;
+  const key = process.env.OPENROUTER_API_KEY || process.env.VITE_OPENROUTER_KEY;
   if (!key) {
-    res.status(500).json({ error: "Server missing OPENROUTER_API_KEY" });
+    res.status(500).json({ error: "Server missing OPENROUTER_API_KEY or VITE_OPENROUTER_KEY" });
     return;
   }
 

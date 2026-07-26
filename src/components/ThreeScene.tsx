@@ -6,7 +6,7 @@ import * as THREE from "three";
 /* ---------- NETWORK (SUBTLE) ---------- */
 
 function Network() {
-  const group: any = useRef();
+  const group = useRef<any>(null);
   const { mouse } = useThree();
 
   const nodes = useMemo(() => {
@@ -66,10 +66,12 @@ function Network() {
 /* ---------- AI CORE (SUBTLE CENTER) ---------- */
 
 function Core() {
-  const ref: any = useRef();
+  const ref = useRef<any>(null);
 
   useFrame(() => {
-    ref.current.rotation.y += 0.0008;
+    if (ref.current) {
+      ref.current.rotation.y += 0.0008;
+    }
   });
 
   return (
