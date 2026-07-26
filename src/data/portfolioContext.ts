@@ -9,7 +9,9 @@ ML systems, analytics dashboards, and intelligent applications.
 Skills:
 Python, SQL, Machine Learning, Data Analysis,
 Tableau, Power BI, Excel, Statistics,
-EDA, Data Cleaning, Model Evaluation.
+EDA, Data Cleaning, Model Evaluation,
+Time Series Forecasting, Audio ML, LLM automation,
+Model deployment, visualization, and analytics storytelling.
 
 Internship:
 Data Science Intern — AI Variant (Oct 2025 – Jan 2026)
@@ -21,6 +23,7 @@ Projects:
 - Human Scream Detection (Audio ML)
 - AI Agent (LLM automation)
 - 20 Data Science Assignments repository
+- Resume insights and portfolio assistant
 
 Certifications:
 NASSCOM Gold (86%), ExcelR Data Science,

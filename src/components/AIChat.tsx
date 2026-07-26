@@ -121,7 +121,7 @@ Answer professionally like explaining a candidate.
       speak(reply);
     } catch (error: any) {
       console.error("AI request failed:", error);
-      const errorMessage = error?.response?.data?.error?.message || error?.message || "AI not connected. Check API key.";
+      const errorMessage = error?.response?.data?.error || error?.message || "AI not connected. Check API key.";
       streamText(`AI error: ${errorMessage}`);
     }
 
