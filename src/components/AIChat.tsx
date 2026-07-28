@@ -12,6 +12,31 @@ export default function AIChat(){
 
   const containerRef:any = useRef(null);
 
+  /* ---------- CANNED RESPONSES FALLBACK ---------- */
+  const cannedResponses: {patterns: string[]; answer: string}[] = [
+    {patterns:["tell me about athul","who are you","about athul"], answer: "I'm Athul N A, a results-driven Data Scientist with practical experience in forecasting, recommendation systems, and analytics using Python, SQL, Scikit-learn, TensorFlow, XGBoost, and visualization tools like Power BI and Tableau."},
+    {patterns:["what roles","roles are you","targeting"], answer: "I'm seeking Data Scientist, Data Analyst, or Machine Learning Engineer roles where I can apply statistical analysis, machine learning, and data visualization to solve real business problems."},
+    {patterns:["strongest technical","skills","what are your skills"], answer: "My core strengths are Python and SQL, machine learning with Scikit-learn and TensorFlow, time-series forecasting (ARIMA, SARIMA, LSTM/GRU), XGBoost, and dashboarding with Power BI, Tableau, and Streamlit."},
+    {patterns:["internship","experience at ai variant","ai variant"], answer: "At AI Variant I developed end-to-end ML solutions including stock forecasting and a course recommendation system, and I created interactive dashboards to communicate insights to stakeholders."},
+    {patterns:["stock","forecast","forecasting"], answer: "I built a Stock Price Forecasting and Analytics Platform combining ARIMA/SARIMA, XGBoost, LSTM and GRU models, with a Streamlit dashboard of 10+ visualizations that improved forecasting accuracy versus baseline approaches."},
+    {patterns:["recommend","recommendation","course recommendation"], answer: "I developed a content-based course recommendation system using TF-IDF and cosine similarity over 3,000+ course records and exposed it via a Streamlit app for instant personalized recommendations."},
+    {patterns:["visualization","dashboard","power bi","tableau"], answer: "I create stakeholder-ready dashboards in Power BI and Tableau and interactive demos with Streamlit and Plotly to present key KPIs and actionable insights clearly."},
+    {patterns:["education","degree","b.tech"], answer: "I hold a B.Tech in Computer Science from Vidya Academy of Science and Technology, affiliated with APJ Abdul Kalam Technological University (2021–2025)."},
+    {patterns:["certification","certifications"], answer: "I have certifications including NASSCOM Masters Program in Data Science (Gold), Deloitte Data Analytics Job Simulation, ExcelR Data Science Programme, and Coursera Advanced Data Visualization."},
+    {patterns:["why should we hire","why hire you"], answer: "I combine strong technical skills, practical project experience across forecasting, recommendations, and dashboards, and a user-focused approach that turns data into clear, actionable outcomes."},
+    {patterns:["relocate","remote","where are you based"], answer: "I'm based in Thrissur, Kerala, India; I'm open to relocation and work effectively in remote or distributed teams."},
+    {patterns:["show me your work","portfolio","github"], answer: "My portfolio contains project demos and Streamlit apps; I can share GitHub and deployed links on request so you can review code and live demos."},
+    {patterns:["default","summary","summarize athul"], answer: "Athul is a practical, delivery-focused Data Scientist skilled in Python, SQL, ML, time-series forecasting, recommendation systems, and visualization — he builds reproducible pipelines and stakeholder-ready dashboards."}
+  ];
+
+  const getFallbackAnswer=(text:string)=>{
+    const t=text.toLowerCase();
+    for(const item of cannedResponses){
+      if(item.patterns.some(p=>t.includes(p))) return item.answer;
+    }
+    return null;
+  };
+
   /* ---------- LOAD MEMORY ---------- */
   useEffect(()=>{
     const saved=localStorage.getItem("ai-memory");
@@ -118,13 +143,25 @@ If the user asks about skills or experience, cite specific certifications, proje
         }
       );
 
-      const reply = res.data?.choices?.[0]?.message?.content ?? "I couldn't generate a response.";
-      streamText(reply);
-      speak(reply);
+      const reply = res.data?.choices?.[0]?.message?.content ?? "";
+      let finalReply = reply;
+      if(!finalReply || /couldn't generate|I couldn't generate|AI not connected/i.test(finalReply) || finalReply.trim().length < 5){
+        const fallback = getFallbackAnswer(content);
+        if(fallback) finalReply = fallback;
+        else finalReply = reply || "I couldn't generate a response.";
+      }
+      streamText(finalReply);
+      speak(finalReply);
     } catch (error: any) {
       console.error("AI request failed:", error);
       const errorMessage = error?.response?.data?.error || error?.message || "AI not connected. Check API key.";
-      streamText(`AI error: ${errorMessage}`);
+      const fallback = getFallbackAnswer(content);
+      if(fallback){
+        streamText(fallback);
+        speak(fallback);
+      } else {
+        streamText(`AI error: ${errorMessage}`);
+      }
     }
 
     setLoading(false);
