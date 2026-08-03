@@ -123,7 +123,7 @@ If the user asks about skills or experience, cite specific certifications, proje
     const browserKey = import.meta.env.VITE_OPENROUTER_KEY as string;
     const endpoint = useProxy ? "/api/openrouter" : "https://api.openrouter.ai/v1/chat/completions";
 
-    if (!useProxy && (!browserKey || browserKey === "Your API Key")) {
+    if (!useProxy && (!browserKey || browserKey === "Your API Key" || browserKey === "Your_API_Key_Here")) {
       streamText("Missing OpenRouter API key for local development. Copy .env.example to .env and set VITE_OPENROUTER_KEY.");
       setLoading(false);
       return;
