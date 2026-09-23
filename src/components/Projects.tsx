@@ -5,6 +5,23 @@ export default function Projects() {
   const [filter, setFilter] = useState("All");
 
   const projects = [
+
+    {
+  title: "Enterprise AI Data Analyst Platform",
+  category: "ML",
+  description:
+    "End-to-end AI-powered data analytics platform combining automated data analysis, RAG-based conversational AI, Text-to-SQL, and interactive Streamlit dashboards.",
+  details: [
+    "Automated data ingestion, profiling, and cleaning",
+    "EDA, KPI analysis, and interactive visualizations",
+    "RAG chatbot using LangChain, ChromaDB, and BM25",
+    "Google Gemini integration for natural-language analysis",
+    "Read-only Text-to-SQL with SQLite query execution",
+    "Machine learning workflows and automated reporting"
+  ],
+  live: "https://ai-insight-flow.streamlit.app/",
+  github: "https://github.com/Athulajithan/AI-Data-Analyst-Platform",
+},
     
     {
   title: "Online Course Recommendation System",
