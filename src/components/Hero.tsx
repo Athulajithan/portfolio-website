@@ -40,7 +40,7 @@ export default function Hero() {
 
           <h2 className="text-xl text-gray-300 mt-4 h-10">
             <Typewriter
-              words={["Junior Data Scientist", "Data Analyst", "AI Engineer", "ML Engineer"]}
+              words={["Junior Data Scientist", "AI Engineer", "ML Engineer", "GenAI Developer", "AI Analyst", "Data Analyst"]}
               loop
               cursor
             />
